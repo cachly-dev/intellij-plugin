@@ -1,0 +1,35 @@
+<idea-plugin>
+    <id>dev.cachly.brain</id>
+    <name>Cachly Brain</name>
+    <vendor email="support@cachly.dev" url="https://cachly.dev">Cachly</vendor>
+    <description><![CDATA[
+        <p>AI Brain health monitor for <a href="https://cachly.dev">Cachly</a>.</p>
+        <p>Shows lesson count, recall stats, and estimated token savings in the status bar.
+        Click to see all learned lessons with details.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <statusBarWidgetFactory
+                id="CachlyBrainWidget"
+                implementation="dev.cachly.brain.CachlyStatusBarWidgetFactory"
+                order="after encodingWidget"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="dev.cachly.brain.CachlySettingsConfigurable"
+                id="dev.cachly.brain.settings"
+                displayName="Cachly Brain"/>
+        <applicationService
+                serviceImplementation="dev.cachly.brain.CachlySettings"/>
+    </extensions>
+
+    <actions>
+        <action id="Cachly.ShowBrainHealth"
+                class="dev.cachly.brain.ShowBrainHealthAction"
+                text="Show Brain Health"
+                description="Show Cachly Brain health and lesson details">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
