@@ -1,48 +1,89 @@
-# Cachly Brain — IntelliJ Plugin
+# Your AI Brain, Visible Inside IntelliJ
 
-AI Brain health monitor for [Cachly](https://cachly.dev). Shows lesson count, recall stats, and estimated token savings in the IntelliJ status bar.
+> **Cachly Brain — IntelliJ Plugin** — See your AI assistant's memory at a glance: lessons learned, tokens saved, session history, and brain health — right in your IDE's status bar.
+
+[![JetBrains Marketplace](https://img.shields.io/badge/JetBrains-Marketplace-orange?logo=jetbrains)](https://plugins.jetbrains.com/plugin/cachly-brain)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../../LICENSE)
+
+---
+
+## What This Plugin Does
+
+You've set up the cachly MCP server. Your AI assistant is now learning and remembering. But how do you know it's working? How many lessons has it stored? How much money has it saved you?
+
+**This plugin makes your AI's brain visible.** Status bar widget, health dialog, lessons table — inside any JetBrains IDE.
+
+---
 
 ## Features
 
-- 🧠 **Status bar widget** — live lesson count and brain health
-- 📖 **Lesson viewer** — see all learned lessons with recall counts, severity, and what worked
-- 💰 **Token savings** — estimates how many tokens (and dollars) the brain saves by reusing solutions
-- ⚙️ **Settings panel** — configure API key, instance ID, and refresh interval under Tools → Cachly Brain
+- **Status bar widget** — Live lesson count and brain health (`🧠 Brain: 42 lessons`)
+- **Brain Health Dialog** — Storage usage, tier, recalls, estimated tokens & cost saved
+- **Lessons View** — All lessons with topic, outcome, recall count, and what worked
+- **Auto-refresh** — Configurable interval (default 5 minutes)
+- **All JetBrains IDEs** — IntelliJ IDEA, WebStorm, PyCharm, GoLand, Rider, and more
 
-## Installation
+---
+
+## Setup
 
 ### From JetBrains Marketplace (coming soon)
-
-Search for "Cachly Brain" in **Settings → Plugins → Marketplace**.
+Search for **"Cachly Brain"** in **Settings → Plugins → Marketplace**.
 
 ### Manual Install
-
-1. Download the `.zip` from [GitHub Releases](https://github.com/HeinrichNebula/cachly/releases)
-2. **Settings → Plugins → ⚙️ → Install Plugin from Disk…**
-3. Select the `.zip` file
-
-## Configuration
-
-Go to **Settings → Tools → Cachly Brain** and enter:
+1. Download the `.zip` from [GitHub Releases](https://github.com/cachly-dev/intellij-plugin/releases)
+2. **Settings → Plugins → ⚙️ → Install Plugin from Disk** → select the `.zip`
+3. **Settings → Tools → Cachly Brain** and set:
 
 | Setting | Description |
 |---------|-------------|
-| API Key | Your Cachly API key (`cky_live_...`) |
+| API Key | Your Cachly API key (`cky_live_...`) from [cachly.dev](https://cachly.dev) |
 | Instance ID | Your Brain instance UUID |
-| API URL | `https://api.cachly.dev` (default) |
 | Refresh Interval | Status bar refresh in seconds (default: 300) |
 
-## How Lessons Work
+---
 
-Lessons are created when an AI assistant (GitHub Copilot, Claude, Cursor) calls `learn_from_attempts()` via the [Cachly MCP server](https://github.com/HeinrichNebula/cachly/tree/main/sdk/mcp). Each recall via `recall_best_solution()` or `session_start()` reuses a known solution instead of re-researching, saving ~1,200 tokens per recall.
+## With vs. Without the Plugin
+
+| | Without plugin | With plugin |
+|--|---------------|------------|
+| Brain health | Unknown | Live status bar |
+| Lesson count | Check elsewhere | Visible in IDE |
+| Tokens saved | No idea | Shown in dialog |
+| Session recall | Invisible | See it happen |
+
+---
+
+## Pricing
+
+The plugin is free. It connects to your cachly Brain instance:
+
+| Tier | RAM | Price |
+|------|-----|-------|
+| **Free** | 25 MB | €0/mo |
+| **Dev** | 200 MB | €9/mo |
+| **Pro** | 900 MB | €29/mo |
+| **Speed** | 900 MB Dragonfly + Semantic Cache | €79/mo |
+| **Business** | 7 GB | €199/mo |
+
+---
 
 ## Build
 
 ```bash
 cd sdk/intellij
 ./gradlew buildPlugin
-# Output: build/distributions/cachly-brain-intellij-0.1.0.zip
+# Output: build/distributions/cachly-brain-0.2.0.zip
 ```
+
+---
+
+## Links
+
+- [cachly.dev](https://cachly.dev) — Dashboard & free signup
+- [AI Brain docs](https://cachly.dev/docs/ai-memory) — MCP server setup
+- [MCP Server npm](https://www.npmjs.com/package/@cachly-dev/mcp-server) — The brain backend
+- [VS Code Extension](https://github.com/cachly-dev/vscode-extension)
 
 ## License
 
